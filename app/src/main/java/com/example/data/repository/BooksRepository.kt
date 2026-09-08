@@ -8,6 +8,107 @@ object BooksRepository {
 
     val BOOKS_LIST: List<Book> = listOf(
         Book(
+            id = "saiful_jabbar",
+            titleUrdu = "سیف الجبار المسلول على أعداء الأبرار",
+            titleHindi = "सैफ़ुल जब्बार अल-मशलूल",
+            titleEnglish = "Saiful Jabbar al-Mashlool",
+            titleHinglish = "Saiful Jabbar al-Mashlool",
+            authorUrdu = "حضرت شاہ فضلِ رسول قادری بدایونی ؒ (سیف اللہ المسلول)",
+            authorHindi = "हज़रत शाह फ़ज़्ल-ए-रसूल क़ादरी बदायूंनी ؒ",
+            authorEnglish = "Hazrat Shah Fazle Rasool Badayuni ؒ (Saifullahil Mashlool)",
+            authorHinglish = "Hazrat Shah Fazle Rasool Badayuni ؒ",
+            authorId = "shah_fazle_rasool",
+            category = BookCategory.KHANQAH_QADRIAH,
+            descriptionUrdu = "حضرت شاہ فضلِ رسول بدایونی قدس سرہ کی معرکۃ الآراء کتاب جس نے اہل سنت کے عقائدِ حقہ، عظمتِ مصطفیٰ ﷺ اور اولیاء اللہ کے احترام کو برہانِ قاطع کے ساتھ ثابت فرمایا۔",
+            descriptionHindi = "हज़रत शाह फ़ज़्ल-ए-रसूल बदायूंनी ؒ की ऐतिहासिक शाहकार किताब जिसमें अक़ीदा-ए-अहले सुन्नत व अज़मत-ए-रसूल ﷺ का अकाट्य प्रमाण प्रस्तुत किया गया।",
+            descriptionEnglish = "Masterwork of Shah Fazle Rasool Badayuni defending the pristine beliefs of Ahle Sunnat and the supreme veneration of the Prophet ﷺ.",
+            publicationInfo = "خانقاہِ عالیہ قادریہ بدایوں شریف / qadri.in",
+            chapters = listOf(
+                BookChapter(
+                    "sj_ch1", 1, "عظمت و اختیاراتِ مصطفیٰ ﷺ قرآن کی روشنی میں",
+                    "अज़मत-ए-मुस्तफ़ा ﷺ क़ुरआन में",
+                    "Prophetic Eminence and Authority in the Quran",
+                    """ارشادِ باری تعالیٰ ہے: 'وَمَا أَرْسَلْنَاكَ إِلَّا رَحْمَةً لِلْعَالَمِينَ'۔
+حضور سرورِ کائنات ﷺ اللہ رب العزت کے اذن و عطا سے تمام جہانوں کے لیے رحمتِ کاملہ ہیں۔
+اللہ تبارک و تعالیٰ نے آپ کو علمِ غیب، شفاعتِ کبریٰ اور تصرفات کی عظیم دولت سے نوازا ہے۔
+کسی بھی مسلمان کے دل میں ذرہ برابر بھی رسول اللہ ﷺ کی تعظیم میں کمی واقع ہونا ایمان کے ضیاع کا سبب ہے۔"""
+                ),
+                BookChapter(
+                    "sj_ch2", 2, "توسل و استمداد اور اولیاء کرام کی تعظیم",
+                    "तवस्सुल व इस्तिमदाद और औलिया का आदर",
+                    "Tawassul and Honor of the Righteous Saints",
+                    """انبیاء و اولیاء کے وسیلے سے بارگاہِ الٰہی میں دعا کرنا جائز اور سلفِ صالحین کا متوارث طریقہ ہے۔
+ارشادِ باری تعالیٰ: 'يَا أَيُّهَا الَّذِينَ آمَنُوا اتَّقُوا اللَّهَ وَابْتَغُوا إِلَيْهِ الْوَسِيلَةَ'۔
+حقیقی فاعل اور حاجت روا صرف اللہ تعالیٰ ہے، جبکہ اولیاء و صالحین اس کے پیارے بندے اور بارگاہِ الٰہی میں شفیع ہیں۔"""
+                )
+            ),
+            totalPagesEstimate = 320,
+            officialWebsiteUrl = "https://www.qadri.in/books"
+        ),
+        Book(
+            id = "al_bariq_ul_muhammadiyyah",
+            titleUrdu = "البوارق المحمدية في رد الشياطين النجدية",
+            titleHindi = "अल-बवारिक़ुल मुहम्मदिया",
+            titleEnglish = "Al-Bariq-ul-Muhammadiyyah",
+            titleHinglish = "Al-Bariq-ul-Muhammadiyyah",
+            authorUrdu = "حضرت شاہ فضلِ رسول قادری بدایونی ؒ",
+            authorHindi = "हज़रत शाह फ़ज़्ल-ए-रसूल क़ादरी बदायूंनी ؒ",
+            authorEnglish = "Hazrat Shah Fazle Rasool Badayuni ؒ",
+            authorHinglish = "Hazrat Shah Fazle Rasool Badayuni ؒ",
+            authorId = "shah_fazle_rasool",
+            category = BookCategory.KHANQAH_QADRIAH,
+            descriptionUrdu = "بدعات اور خوارج نما گمراہ نظریات کا مستند قلمی تعاقب اور مسلکِ سوادِ اعظم اہل سنت کا مضبوط علمی حصار۔",
+            descriptionHindi = "भटके हुए संप्रदायों का खंडन और अहले सुन्नत की राह की हिफ़ाज़त पर प्रामाणिक किताब।",
+            descriptionEnglish = "Critique and refutation of modern deviations, establishing the orthodox Sunni consensus.",
+            publicationInfo = "تاج الفحول اکیڈمی، بدایوں شریف / qadri.in",
+            chapters = listOf(
+                BookChapter(
+                    "bm_ch1", 1, "سوادِ اعظم کی اہمیت و ائمہ کا اتفاق",
+                    "सवाद-ए-आज़म का महत्व",
+                    "Importance of the Majority Consensus (Sawad al-A'zam)",
+                    """حدیثِ رسول ﷺ: 'إِنَّ اللَّهَ لَا يَجْمَعُ أُمَّتِي عَلَى ضَلَالَةٍ وَيَدُ اللَّهِ مَعَ الْجَمَاعَةِ'۔
+امتِ محمدیہ کا بڑا گروہ سلف صالحین، ائمہ اربعہ اور صوفیائے کرام کے طریقے پر قائم ہے۔
+جو شخص اجماعِ امت سے الگ راہ اختیار کرتا ہے وہ ضلالت کی وادی میں جا گرتا ہے۔"""
+                )
+            ),
+            totalPagesEstimate = 210,
+            officialWebsiteUrl = "https://www.qadri.in/books"
+        ),
+        Book(
+            id = "al_mutaqad_al_muntaqad",
+            titleUrdu = "المعتقد المنتقد معتمد المستند",
+            titleHindi = "अल-मोतक़द अल-मुन्तक़द",
+            titleEnglish = "Al-Mu'taqad Al-Muntaqad",
+            titleHinglish = "Al-Mu'taqad Al-Muntaqad",
+            authorUrdu = "حضرت شاہ فضلِ رسول قادری بدایونی ؒ",
+            authorHindi = "हज़रत शाह फ़ज़्ल-ए-रसूल क़ादरी बदायूंनी ؒ",
+            authorEnglish = "Hazrat Shah Fazle Rasool Badayuni ؒ",
+            authorId = "shah_fazle_rasool",
+            category = BookCategory.KHANQAH_QADRIAH,
+            descriptionUrdu = "عقائدِ اسلامی کا کامل و مدلل دستور جس پر بعد ازاں امام احمد رضا خان قادری بریلوی ؒ نے معتمد المستند کی صورت میں عظیم حاشیہ تحریر فرمایا۔",
+            descriptionHindi = "इस्लामी अक़ीदों का संपूर्ण व प्रमाणिक दस्तावेज़, जिस पर आला हज़रत ने ऐतिहासिक हाशिया लिखा।",
+            descriptionEnglish = "Foundational creedal compendium of Ahle Sunnat which served as the basis for Ala Hazrat's commentary.",
+            publicationInfo = "مکتبہ قادریہ، بدایوں شریف / qadri.in",
+            chapters = listOf(
+                BookChapter(
+                    "mm_ch1", 1, "توحیدِ باری تعالیٰ اور صفاتِ الٰہیہ",
+                    "तौहीद व सिफ़ात-ए-इलाही",
+                    "Divine Oneness and Attributes",
+                    """اللہ سبحانہ و تعالیٰ اپنی ذات و صفات میں یکتا و بے نیاز ہے۔ نہ اس کا کوئی شریک ہے نہ ہمسر۔
+اس کی تمام صفات قدیم اور کامل ہیں، عیب اور نقص سے پاک ہیں۔"""
+                ),
+                BookChapter(
+                    "mm_ch2", 2, "نبوت و رسالت اور عصمتِ انبیاء علیہم السلام",
+                    "नुबुव्वत व इस्मत-ए-अंबिया",
+                    "Prophethood and Infallibility of Prophets",
+                    """تمام انبیاء کرام علیہم السلام معصوم عن الخطا ہیں۔
+سیدنا محمد رسول اللہ ﷺ خاتم النبیین اور سید الاولین والآخرین ہیں۔ آپ کے بعد کوئی نبی نہیں آ سکتا۔"""
+                )
+            ),
+            totalPagesEstimate = 360,
+            officialWebsiteUrl = "https://www.qadri.in/books"
+        ),
+        Book(
             id = "ihqaq_ul_haq",
             titleUrdu = "احقاق الحق المبين في إبطال أصول المبتدعين",
             titleHindi = "अहक़ाक़ुल हक़ अल-मुबीन",
@@ -15,13 +116,13 @@ object BooksRepository {
             titleHinglish = "Ihqaq-ul-Haq al-Mubeen",
             authorUrdu = "حضرت شاہ فضلِ رسول قادری بدایونی ؒ",
             authorHindi = "हज़रत शाह फ़ज़्ल-ए-रसूल क़ादरी बदायूंनी ؒ",
-            authorEnglish = "Hazrat Shah Fazl-e-Rasool Qadri Badayuni ؒ",
-            authorHinglish = "Hazrat Shah Fazl-e-Rasool Qadri Badayuni ؒ",
+            authorEnglish = "Hazrat Shah Fazle Rasool Badayuni ؒ",
+            authorHinglish = "Hazrat Shah Fazle Rasool Badayuni ؒ",
             authorId = "shah_fazle_rasool",
             category = BookCategory.KHANQAH_QADRIAH,
             descriptionUrdu = "عقائدِ اہل سنت و جماعت کا عظیم الشان علمی دفاع اور بدعات و گمراہ کن نظریات کا مدلل رد۔ خانوادۂ قادریہ بدایوں شریف کی شاہکار تصنیف۔",
             descriptionHindi = "अहले सुन्नत व जमात के अक़ीदे का ऐतिहासिक प्रमाणिक ग्रंथ, बदायूं शरीफ़ की महान कृति।",
-            descriptionEnglish = "Monumental masterpiece authored by Shah Fazl-e-Rasool Badayuni in defense of traditional Sunni orthodoxy.",
+            descriptionEnglish = "Monumental masterpiece authored by Shah Fazle Rasool Badayuni in defense of traditional Sunni orthodoxy.",
             publicationInfo = "مکتبہ قادریہ بدایوں شریف / qadri.in",
             chapters = listOf(
                 BookChapter(
@@ -44,6 +145,87 @@ object BooksRepository {
                 )
             ),
             totalPagesEstimate = 280,
+            officialWebsiteUrl = "https://www.qadri.in/books"
+        ),
+        Book(
+            id = "tabbat_un_najdi",
+            titleUrdu = "تبت النجدي واستقر الهدى",
+            titleHindi = "तब्बत-उन-नजदी वस्तक़र्र-अल-हुदा",
+            titleEnglish = "Tabbat-un-Najdi wa-staqarr-al-Huda",
+            titleHinglish = "Tabbat-un-Najdi",
+            authorUrdu = "حضرت شاہ فضلِ رسول قادری بدایونی ؒ",
+            authorHindi = "हज़रत शाह फ़ज़्ल-ए-रसूल क़ादरी बदायूंनी ؒ",
+            authorEnglish = "Hazrat Shah Fazle Rasool Badayuni ؒ",
+            authorId = "shah_fazle_rasool",
+            category = BookCategory.KHANQAH_QADRIAH,
+            descriptionUrdu = "فتنہ نجد اور خارجیت کے افکار کا دلائل و براہین سے رد اور سلف صالحین کے مستقیم راستے کا بیان۔",
+            descriptionHindi = "नज्दी फ़ितने व गुमराह अक़ीदों का ऐतिहासिक व तार्किक खंडन।",
+            descriptionEnglish = "Tract refuting sectarian extremism and outlining the orthodox historic consensus of Ahlus Sunnah.",
+            publicationInfo = "مکتبہ قادریہ، بدایوں شریف / qadri.in",
+            chapters = listOf(
+                BookChapter(
+                    "tn_ch1", 1, "خوارج کے اوصاف اور احادیثِ مبارکہ کی تنبیہ",
+                    "ख़वारिज के लक्षण व हदीस की चेतावनी",
+                    "Characteristics of Extremists in Hadith Warnings",
+                    """احادیثِ صحیحہ میں حضور ﷺ نے ایسے گروہوں سے خبردار فرمایا جو قرآن پڑھیں گے لیکن وہ ان کے حلق سے نیچے نہیں اترے گا، اور وہ اہل ایمان پر کفر کے فتوے لگائیں گے۔
+اہل سنت کی علامت نرمی، اخلاقِ حسنہ، اور مسلمانوں کی تکفیر سے بچنا ہے۔"""
+                )
+            ),
+            totalPagesEstimate = 140,
+            officialWebsiteUrl = "https://www.qadri.in/books"
+        ),
+        Book(
+            id = "fasl_ul_khitab",
+            titleUrdu = "فصل الخطاب في إثبات أحوال الأقطاب",
+            titleHindi = "फ़स्लुल ख़िताब फ़ी इसबात-ए-अहवालिल अक़ताब",
+            titleEnglish = "Fasl-ul-Khitab fi Isbat Ahwal-il-Aqtab",
+            titleHinglish = "Fasl-ul-Khitab",
+            authorUrdu = "حضرت شاہ فضلِ رسول قادری بدایونی ؒ",
+            authorHindi = "हज़रत शाह फ़ज़्ल-ए-रसूल क़ादरी बदायूंनी ؒ",
+            authorEnglish = "Hazrat Shah Fazle Rasool Badayuni ؒ",
+            authorId = "shah_fazle_rasool",
+            category = BookCategory.TASAWWUF,
+            descriptionUrdu = "اولیاء اللہ کے مقامات، ولایتِ کبریٰ، قطبیت و غوثیت کے روحانی مدارج اور کراماتِ اولیاء کا مستند ثبوت۔",
+            descriptionHindi = "औलिया-ए-किराम के आध्यात्मिक दर्जे, क़ुतुबियत व ग़ौसियत और करामात का प्रमाणिक बयान।",
+            descriptionEnglish = "Treatise on the stations of saintly gnostics, the hierarchy of Wilayah, and blessings of righteous friends of Allah.",
+            publicationInfo = "مکتبہ قادریہ، بدایوں شریف / qadri.in",
+            chapters = listOf(
+                BookChapter(
+                    "fk_ch1", 1, "ولایت اور کرامتِ اولیاء کا شرعی ثبوت",
+                    "विलायत व करामात का शरई प्रमाण",
+                    "Shariah Foundations of Saintly Miracles",
+                    """ارشادِ الٰہی: 'أَلَا إِنَّ أَوْلِيَاءَ اللَّهِ لَا خَوْفٌ عَلَيْهِمْ وَلَا هُمْ يَحْزَنُونَ الَّذِينَ آمَنُوا وَكَانُوا يَتَّقُونَ'۔
+اولیاء اللہ کی کرامات برحق ہیں جو درحقیقت ان کے متبوع یعنی نبی اکرم ﷺ کے معجزات کا پرتو ہیں۔"""
+                )
+            ),
+            totalPagesEstimate = 180,
+            officialWebsiteUrl = "https://www.qadri.in/books"
+        ),
+        Book(
+            id = "talkhees_ul_haq",
+            titleUrdu = "تلخیص الحق في عقائد الصدق",
+            titleHindi = "तल्ख़ीसुल हक़ फ़ी अक़ाइदिस सिद्क़",
+            titleEnglish = "Talkhees-ul-Haq fi Aqaid-is-Sidq",
+            titleHinglish = "Talkhees-ul-Haq",
+            authorUrdu = "حضرت شاہ فضلِ رسول قادری بدایونی ؒ",
+            authorHindi = "हज़रत शाह फ़ज़्ल-ए-रसूल क़اदरी बदायूंनी ؒ",
+            authorEnglish = "Hazrat Shah Fazle Rasool Badayuni ؒ",
+            authorId = "shah_fazle_rasool",
+            category = BookCategory.KHANQAH_QADRIAH,
+            descriptionUrdu = "اہل سنت کے بنیادی عقائد کا تلخیص شدہ، آسان فہم اور مستند خلاصہ جو ہر مسلمان کی فکری رہنمائی کے لیے ناگزیر ہے۔",
+            descriptionHindi = "अहले सुन्नत के बुनियादी अक़ीदों का संक्षेप और सरल प्रमाणिक संकलन।",
+            descriptionEnglish = "Concise and definitive summary of Sunni orthodox theology for everyday seekers.",
+            publicationInfo = "مکتبہ قادریہ بدایوں شریف / qadri.in",
+            chapters = listOf(
+                BookChapter(
+                    "th_ch1", 1, "ضروریاتِ دین اور عقائدِ حقہ کا خلاصہ",
+                    "ज़रूरियात-ए-दीन का सारांश",
+                    "Essentials of Islamic Faith & Beliefs",
+                    """اسلام کے بنیادی ارکان اور ایمان کے بنیادی تقاضوں کی پاسداری۔
+حضور ﷺ کی سنت اور صحابہ و اہل بیت کے نقوشِ قدم پر استقامت۔"""
+                )
+            ),
+            totalPagesEstimate = 130,
             officialWebsiteUrl = "https://www.qadri.in/books"
         ),
         Book(

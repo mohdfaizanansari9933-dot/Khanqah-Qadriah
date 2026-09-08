@@ -111,7 +111,23 @@ fun PrayerCountdownCard(
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Column {
+                    Column(modifier = Modifier.weight(1f)) {
+                        if (nextPrayer.currentPrayer != null && nextPrayer.currentPrayerEndsIn != null) {
+                            Surface(
+                                shape = RoundedCornerShape(8.dp),
+                                color = GoldPrimary.copy(alpha = 0.2f),
+                                modifier = Modifier.padding(bottom = 4.dp)
+                            ) {
+                                Text(
+                                    text = if (isUrdu) "جاری: ${nextPrayer.currentPrayer.urduName} (باقی: ${nextPrayer.currentPrayerEndsIn})" 
+                                           else "Active: ${nextPrayer.currentPrayer.englishName} (${nextPrayer.currentPrayerEndsIn} left)",
+                                    color = GoldLight,
+                                    fontSize = 11.sp,
+                                    fontWeight = FontWeight.SemiBold,
+                                    modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
+                                )
+                            }
+                        }
                         Text(
                             text = if (isUrdu) "اگلی نماز: ${nextPrayer.prayer.urduName}" else "Next: ${nextPrayer.prayer.englishName}",
                             color = CreamBg.copy(alpha = 0.9f),
@@ -120,7 +136,7 @@ fun PrayerCountdownCard(
                         Text(
                             text = nextPrayer.timeFormatted,
                             color = Color.White,
-                            fontSize = 32.sp,
+                            fontSize = 30.sp,
                             fontWeight = FontWeight.ExtraBold
                         )
                     }
@@ -130,9 +146,9 @@ fun PrayerCountdownCard(
                         horizontalAlignment = Alignment.End
                     ) {
                         Text(
-                            text = if (isUrdu) "باقی وقت" else "Time Left",
+                            text = if (isUrdu) "اگلی نماز میں باقی" else "Time Left",
                             color = GoldLight.copy(alpha = 0.85f),
-                            fontSize = 12.sp
+                            fontSize = 11.sp
                         )
                         Text(
                             text = countdownString,

@@ -3,6 +3,7 @@ package com.example
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
@@ -36,9 +37,12 @@ import com.example.data.repository.AppPreferencesRepository
 import com.example.data.repository.IslamicCalendarRepository
 import com.example.data.repository.KhanqahRepository
 import com.example.data.repository.KnowledgeRepository
+import com.example.data.repository.UserProfileRepository
+import com.example.ui.components.AuthModal
 import com.example.ui.components.IslamicTopAppBar
 import com.example.ui.screens.*
 import com.example.ui.theme.*
+import com.example.util.AzanAlarmManager
 import com.google.android.gms.location.LocationServices
 import kotlinx.coroutines.delay
 import java.util.Calendar
@@ -57,10 +61,10 @@ class MainActivity : ComponentActivity() {
 
 enum class NavigationTab(val route: String, val urduTitle: String, val hindiTitle: String, val englishTitle: String, val icon: ImageVector) {
     HOME("home", "ہوم", "होम", "Home", Icons.Default.Home),
-    KHANQAH("khanqah_section", "خانقاہ", "ख़ानक़ाह", "Khanqah", Icons.Default.Mosque),
+    CALENDAR("calendar", "۳۰ روزہ کیلنڈر", "कैलेंडर", "Calendar", Icons.Default.CalendarMonth),
+    SHAJRA("shajra", "شجرہ شریف", "शजरा", "Shajra", Icons.Default.AccountTree),
+    SALAM("salam", "سلام و درود", "सलाम", "Salam", Icons.Default.Favorite),
     QURAN("quran", "قرآن پاک", "क़ुरआन", "Quran", Icons.Default.MenuBook),
-    PRAYER("prayer", "نماز", "नमाज़", "Prayer", Icons.Default.AccessTime),
-    BOOKS("books", "کتب خانہ", "किताबें", "Books", Icons.Default.LibraryBooks),
     MORE("more", "مزید", "और", "More", Icons.Default.Widgets)
 }
 
@@ -90,10 +94,12 @@ fun KhanqahQadriahApp() {
     var currentRoute by remember { mutableStateOf("home") }
     var previousRoute by remember { mutableStateOf("home") }
     var selectedScholar by remember { mutableStateOf<ScholarProfile?>(null) }
+    var showAuthModal by remember { mutableStateOf(false) }
 
     // Live Clock ticker for prayer countdown
     var currentCalendar by remember { mutableStateOf(Calendar.getInstance()) }
     LaunchedEffect(Unit) {
+        AzanAlarmManager.initNotificationChannel(context)
         while (true) {
             currentCalendar = Calendar.getInstance()
             delay(1000)
@@ -183,7 +189,10 @@ fun KhanqahQadriahApp() {
 
     if (showSplash) {
         SplashScreen(
-            onSplashFinished = { showSplash = false }
+            onSplashFinished = {
+                showSplash = false
+                requestGps()
+            }
         )
     } else {
         // Support RTL Layout for Urdu
@@ -216,6 +225,15 @@ fun KhanqahQadriahApp() {
                                 previousRoute = currentRoute
                                 currentRoute = "about"
                             },
+                            onProfileClick = {
+                                val authState = UserProfileRepository.authState.value
+                                if (authState.isLoggedIn) {
+                                    previousRoute = currentRoute
+                                    currentRoute = "profile"
+                                } else {
+                                    showAuthModal = true
+                                }
+                            },
                             onKhanqahBadgeClick = {
                                 previousRoute = currentRoute
                                 currentRoute = "khanqah_section"
@@ -225,7 +243,7 @@ fun KhanqahQadriahApp() {
                 },
                 bottomBar = {
                     // Bottom navigation bar visible on main tabs
-                    if (currentRoute in listOf("home", "khanqah_section", "quran", "prayer", "books", "more")) {
+                    if (currentRoute in listOf("home", "calendar", "shajra", "salam", "quran", "more", "khanqah_section", "prayer", "books", "videos")) {
                         NavigationBar(
                             containerColor = CreamSurface,
                             contentColor = EmeraldPrimary,
@@ -398,6 +416,16 @@ fun KhanqahQadriahApp() {
                             currentHijriDate = hijriDate,
                             isUrdu = isUrdu
                         )
+                        "shajra" -> ShajraScreen(
+                            isUrdu = isUrdu
+                        )
+                        "salam" -> SalamScreen(
+                            isUrdu = isUrdu
+                        )
+                        "media" -> VideoGalleryScreen(
+                            currentLanguage = currentLanguage,
+                            onBack = { currentRoute = previousRoute }
+                        )
                         "tasbeeh" -> TasbeehScreen(
                             isUrdu = isUrdu
                         )
@@ -446,8 +474,40 @@ fun KhanqahQadriahApp() {
                             onRequestGpsLocation = { requestGps() },
                             onBack = { currentRoute = previousRoute }
                         )
+                        "profile" -> UserProfileScreen(
+                            isUrdu = isUrdu,
+                            onBack = { currentRoute = previousRoute }
+                        )
+                        "hadith_poster" -> DailyHadithPosterScreen(
+                            isUrdu = isUrdu,
+                            onBack = { currentRoute = previousRoute }
+                        )
+                        "khanqah_ai" -> KhanqahAiScreen(
+                            isUrdu = isUrdu,
+                            onBack = { currentRoute = previousRoute }
+                        )
+                        "akabir_badaun" -> AkabirBadaunScreen(
+                            isUrdu = isUrdu,
+                            onBack = { currentRoute = previousRoute },
+                            onOpenBook = { bookId ->
+                                AppPreferencesRepository.filterBooksByAuthor(null)
+                                previousRoute = currentRoute
+                                currentRoute = "books"
+                            }
+                        )
                     }
                 }
+            }
+
+            if (showAuthModal) {
+                AuthModal(
+                    onDismiss = { showAuthModal = false },
+                    onSuccess = {
+                        showAuthModal = false
+                        previousRoute = currentRoute
+                        currentRoute = "profile"
+                    }
+                )
             }
         }
     }

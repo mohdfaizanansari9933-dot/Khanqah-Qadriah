@@ -11,6 +11,9 @@ data class Surah(
     val meaningUrdu: String
 ) {
     val revelationType: String get() = revelationPlaceUrdu
+    val nameArabic: String get() = arabicName
+    val nameUrdu: String get() = urduName
+    val nameEnglish: String get() = englishName
 }
 
 data class Ayah(

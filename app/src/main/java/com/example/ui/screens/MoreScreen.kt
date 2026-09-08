@@ -59,6 +59,46 @@ fun MoreScreen(
             testTag = "more_item_khanqah"
         ),
         MoreMenuItem(
+            id = "akabir_badaun",
+            titleUrdu = "انسائیکلوپیڈیا اکابرینِ بدایوں",
+            titleEnglish = "Budaun Akabireen Encyclopedia",
+            subtitleUrdu = "سیف اللہ المسلول، قادری دولہا، محبوب الرسول و اکابر",
+            subtitleEnglish = "Biographies, treatises & historical movements",
+            icon = Icons.Default.AutoStories,
+            iconColor = EmeraldPrimary,
+            testTag = "more_item_akabir"
+        ),
+        MoreMenuItem(
+            id = "khanqah_ai",
+            titleUrdu = "خانقاہ AI علمی معاون",
+            titleEnglish = "Khanqah AI Spiritual Assistant",
+            subtitleUrdu = "تاریخ، مسلکِ اہل سنت اور فقہی سوالات کے مدلل جوابات",
+            subtitleEnglish = "Interactive Q&A on Khanqah history & rulings",
+            icon = Icons.Default.SmartToy,
+            iconColor = GoldDark,
+            testTag = "more_item_ai"
+        ),
+        MoreMenuItem(
+            id = "hadith_poster",
+            titleUrdu = "روزانہ حدیث و پوسٹر شیئر (ہندی)",
+            titleEnglish = "Daily Hadith Poster (Hindi)",
+            subtitleUrdu = "روزانہ خوبصورت ہندی کارڈ ڈاؤنلوڈ و سوشل میڈیا شیئر",
+            subtitleEnglish = "High-res shareable Hindi Hadith posters",
+            icon = Icons.Default.CardGiftcard,
+            iconColor = Color(0xFFC2185B),
+            testTag = "more_item_poster"
+        ),
+        MoreMenuItem(
+            id = "profile",
+            titleUrdu = "صارف پروفائل و محفوظات",
+            titleEnglish = "User Profile & Bookmarks",
+            subtitleUrdu = "بک مارکس، روزانہ یاددہانی ترجیحات اور لاگ ان",
+            subtitleEnglish = "Saved Hadith, bookmarks & reminders",
+            icon = Icons.Default.AccountCircle,
+            iconColor = Color(0xFF4527A0),
+            testTag = "more_item_profile"
+        ),
+        MoreMenuItem(
             id = "videos",
             titleUrdu = "ویڈیو گیلری و یوٹیوب",
             titleEnglish = "Video Gallery & YouTube",

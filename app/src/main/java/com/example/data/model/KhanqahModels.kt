@@ -25,6 +25,29 @@ data class ScholarProfile(
     val isVerified: Boolean = true
 )
 
+typealias Scholar = ScholarProfile
+
+val ScholarProfile.birthDeathUrdu: String get() = eraOrDates
+val ScholarProfile.booksWritten: List<String> get() = booksAuthored
+
+data class HuzoorAteefMiyaSpeech(
+    val id: String,
+    val titleUrdu: String,
+    val titleHindi: String,
+    val titleEnglish: String,
+    val occasionUrdu: String,
+    val occasionEnglish: String,
+    val duration: String,
+    val youtubeId: String,
+    val youtubeUrl: String,
+    val summaryUrdu: String,
+    val speakerUrdu: String = "جانشین حضور تاجدارِ اہلِ سنت حضرت صوفی محمد عاطف میاں قادری مدظلہ العالی (سجادہ نشین خانقاہِ عالیہ قادریہ)",
+    val speakerHindi: String = "हज़रत सूफ़ी मोहम्मद आतिफ़ मियां क़ादरी (सज्जादा नशीन)",
+    val speakerEnglish: String = "Hazrat Sufi Mohammad Ateef Miya Qadri (Sajjadah Nashin)",
+    val isFeatured: Boolean = false,
+    val viewsCount: String = "Haq Multimedia Official"
+)
+
 data class KhanqahVideoItem(
     val id: String,
     val titleUrdu: String,
@@ -40,6 +63,7 @@ data class KhanqahVideoItem(
 )
 
 enum class VideoCategory(val urduName: String, val hindiName: String, val englishName: String) {
+    HUZOOR_ATEEF_MIYA("خطابات حضور عاطف میاں", "ख़िताबत हुज़ूर आतिफ़ मियां", "Huzoor Ateef Miya Speeches"),
     LATEST("تازہ ترین ویڈیوز", "ताज़ा तरीन वीडियो", "Latest Videos"),
     BAYAANS("روحانی بیانات", "आध्यात्मिक बयान", "Spiritual Bayaans"),
     ISLAMIC_EVENTS("اسلامی تقاریب", "इस्लामी कार्यक्रम", "Islamic Events"),

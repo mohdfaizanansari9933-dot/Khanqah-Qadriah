@@ -43,6 +43,36 @@ fun QuickAccessGrid(
 ) {
     val items = listOf(
         QuickAccessItem(
+            id = "calendar",
+            titleUrdu = "۳۰ روزہ کیلنڈر",
+            titleHindi = "क़ादरी कैलेंडर",
+            titleEnglish = "Qadri Calendar",
+            titleHinglish = "Qadri Calendar",
+            icon = Icons.Default.CalendarMonth,
+            iconBgColor = Color(0xFF1565C0),
+            testTag = "quick_access_calendar"
+        ),
+        QuickAccessItem(
+            id = "shajra",
+            titleUrdu = "شجرہ عالیہ",
+            titleHindi = "शजरा शरीफ़",
+            titleEnglish = "Shajra Shareef",
+            titleHinglish = "Shajra Shareef",
+            icon = Icons.Default.AccountTree,
+            iconBgColor = GoldDark,
+            testTag = "quick_access_shajra"
+        ),
+        QuickAccessItem(
+            id = "salam",
+            titleUrdu = "سلام و درود",
+            titleHindi = "सलाम व दुरुद",
+            titleEnglish = "Salam & Durood",
+            titleHinglish = "Salam & Durood",
+            icon = Icons.Default.Favorite,
+            iconBgColor = Color(0xFF8E24AA),
+            testTag = "quick_access_salam"
+        ),
+        QuickAccessItem(
             id = "khanqah_section",
             titleUrdu = "خانقاہ قادریہ",
             titleHindi = "ख़ानक़ाह क़ादरिया",
@@ -141,6 +171,46 @@ fun QuickAccessGrid(
             icon = Icons.Default.Language,
             iconBgColor = Color(0xFF00695C),
             testTag = "quick_access_website"
+        ),
+        QuickAccessItem(
+            id = "akabir_badaun",
+            titleUrdu = "اکابرین بدایوں",
+            titleHindi = "अकाबिर बदायूं",
+            titleEnglish = "Akabir Encyclopedia",
+            titleHinglish = "Akabir Encyclopedia",
+            icon = Icons.Default.AutoStories,
+            iconBgColor = EmeraldPrimary,
+            testTag = "quick_access_akabir"
+        ),
+        QuickAccessItem(
+            id = "khanqah_ai",
+            titleUrdu = "خانقاہ AI رہبر",
+            titleHindi = "ख़ानक़ाह AI गाइड",
+            titleEnglish = "Khanqah AI Guide",
+            titleHinglish = "Khanqah AI Guide",
+            icon = Icons.Default.SmartToy,
+            iconBgColor = GoldDark,
+            testTag = "quick_access_ai"
+        ),
+        QuickAccessItem(
+            id = "hadith_poster",
+            titleUrdu = "حدیث و پوسٹر شیئر",
+            titleHindi = "हदीस पोस्टर शेयर",
+            titleEnglish = "Daily Hadith Poster",
+            titleHinglish = "Hadith Poster Share",
+            icon = Icons.Default.CardGiftcard,
+            iconBgColor = Color(0xFFC2185B),
+            testTag = "quick_access_hadith_poster"
+        ),
+        QuickAccessItem(
+            id = "profile",
+            titleUrdu = "پروفائل و محفوظات",
+            titleHindi = "प्रोफ़ाइल व बुकमार्क",
+            titleEnglish = "Profile & Saved",
+            titleHinglish = "Profile & Saved",
+            icon = Icons.Default.AccountCircle,
+            iconBgColor = Color(0xFF4527A0),
+            testTag = "quick_access_profile"
         ),
         QuickAccessItem(
             id = "contact",

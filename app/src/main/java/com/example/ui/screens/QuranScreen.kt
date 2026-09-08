@@ -30,9 +30,12 @@ import com.example.data.model.Ayah
 import com.example.data.model.Para
 import com.example.data.model.Surah
 import com.example.data.repository.AppPreferencesRepository
+import com.example.data.repository.QuranAudioDownloadRepository
 import com.example.data.repository.QuranRepository
 import com.example.ui.components.KhanqahOfficialLogo
+import com.example.ui.components.QuranPlayerBar
 import com.example.ui.theme.*
+import com.example.util.QuranAudioPlayerManager
 
 @Composable
 fun QuranScreen(
@@ -52,23 +55,24 @@ fun QuranScreen(
 
     val paras = remember { QuranRepository.PARAS_LIST }
 
-    if (readingSurah != null) {
-        SurahReaderView(
-            surah = readingSurah!!,
-            isUrdu = isUrdu,
-            onBack = { readingSurah = null },
-            onSaveBookmark = { surahNum, ayahNum ->
-                onSaveLastRead(surahNum, ayahNum)
-                Toast.makeText(context, "بک مارک محفوظ کر لیا گیا", Toast.LENGTH_SHORT).show()
-            }
-        )
-    } else {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(CreamBg)
-                .testTag("quran_screen_container")
-        ) {
+    Box(modifier = Modifier.fillMaxSize()) {
+        if (readingSurah != null) {
+            SurahReaderView(
+                surah = readingSurah!!,
+                isUrdu = isUrdu,
+                onBack = { readingSurah = null },
+                onSaveBookmark = { surahNum, ayahNum ->
+                    onSaveLastRead(surahNum, ayahNum)
+                    Toast.makeText(context, "بک مارک محفوظ کر لیا گیا", Toast.LENGTH_SHORT).show()
+                }
+            )
+        } else {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(CreamBg)
+                    .testTag("quran_screen_container")
+            ) {
             // Search & Tab Bar
             Column(
                 modifier = Modifier
@@ -179,6 +183,17 @@ fun QuranScreen(
                             Text(
                                 text = if (isUrdu) "بک مارک" else "Bookmarks",
                                 fontWeight = if (selectedTab == 2) FontWeight.Bold else FontWeight.Normal,
+                                fontSize = 13.sp
+                            )
+                        }
+                    )
+                    Tab(
+                        selected = selectedTab == 3,
+                        onClick = { selectedTab = 3 },
+                        text = {
+                            Text(
+                                text = if (isUrdu) "ڈاؤنلوڈز" else "Offline",
+                                fontWeight = if (selectedTab == 3) FontWeight.Bold else FontWeight.Normal,
                                 fontSize = 13.sp
                             )
                         }
@@ -316,8 +331,152 @@ fun QuranScreen(
                         )
                     }
                 }
+                3 -> {
+                    // Offline Cached Audio List (Room Database)
+                    val offlineAudios by QuranAudioDownloadRepository.observeAllCachedAudio(context).collectAsState(initial = emptyList())
+
+                    if (offlineAudios.isEmpty()) {
+                        Column(
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .padding(24.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.Center
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.CloudDownload,
+                                contentDescription = null,
+                                tint = GoldDark,
+                                modifier = Modifier.size(56.dp)
+                            )
+                            Spacer(modifier = Modifier.height(12.dp))
+                            Text(
+                                text = if (isUrdu) "کوئی آف لائن تلاوت محفوظ نہیں ہے" else "No Offline Audio Downloaded",
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = EmeraldDark
+                            )
+                            Spacer(modifier = Modifier.height(6.dp))
+                            Text(
+                                text = if (isUrdu) "سورتوں کی فہرست میں سے کسی بھی سورت کے ڈاؤنلوڈ بٹن پر کلک کر کے آف لائن سننے کے لیے محفوظ فرمائیں۔" else "Download any Surah from the list to listen offline without internet.",
+                                fontSize = 12.sp,
+                                color = TextMuted,
+                                textAlign = TextAlign.Center,
+                                lineHeight = 18.sp
+                            )
+                        }
+                    } else {
+                        LazyColumn(
+                            modifier = Modifier.fillMaxSize(),
+                            contentPadding = PaddingValues(16.dp, 8.dp, 16.dp, 90.dp),
+                            verticalArrangement = Arrangement.spacedBy(8.dp)
+                        ) {
+                            item {
+                                Row(
+                                    modifier = Modifier.fillMaxWidth().padding(bottom = 6.dp),
+                                    horizontalArrangement = Arrangement.SpaceBetween,
+                                    verticalAlignment = Alignment.CenterVertically
+                                ) {
+                                    Text(
+                                        text = if (isUrdu) "محفوظ شدہ سورتیں (آف لائن تلاوت)" else "Downloaded Surahs (Offline)",
+                                        fontSize = 14.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        color = EmeraldDark
+                                    )
+                                    Text(
+                                        text = "${offlineAudios.size} سورتیں",
+                                        fontSize = 12.sp,
+                                        color = GoldDark,
+                                        fontWeight = FontWeight.SemiBold
+                                    )
+                                }
+                            }
+                            items(offlineAudios, key = { it.surahNumber }) { cached ->
+                                val matchedSurah = QuranRepository.getSurah(cached.surahNumber)
+                                if (matchedSurah != null) {
+                                    Card(
+                                        modifier = Modifier.fillMaxWidth(),
+                                        shape = RoundedCornerShape(14.dp),
+                                        colors = CardDefaults.cardColors(containerColor = CreamSurface),
+                                        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
+                                    ) {
+                                        Row(
+                                            modifier = Modifier.fillMaxWidth().padding(12.dp),
+                                            horizontalArrangement = Arrangement.SpaceBetween,
+                                            verticalAlignment = Alignment.CenterVertically
+                                        ) {
+                                            Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.weight(1f)) {
+                                                Box(
+                                                    modifier = Modifier.size(38.dp).clip(CircleShape).background(EmeraldSoftBg),
+                                                    contentAlignment = Alignment.Center
+                                                ) {
+                                                    Icon(
+                                                        imageVector = Icons.Default.CheckCircle,
+                                                        contentDescription = "Downloaded",
+                                                        tint = EmeraldPrimary,
+                                                        modifier = Modifier.size(20.dp)
+                                                    )
+                                                }
+                                                Spacer(modifier = Modifier.width(12.dp))
+                                                Column {
+                                                    Text(
+                                                        text = matchedSurah.urduName,
+                                                        fontSize = 15.sp,
+                                                        fontWeight = FontWeight.Bold,
+                                                        color = TextCharcoal
+                                                    )
+                                                    val sizeMb = ((cached.fileSizeBytes / (1024.0 * 1024.0)) * 10.0).toInt() / 10.0
+                                                    Text(
+                                                        text = "${matchedSurah.englishName} • $sizeMb MB",
+                                                        fontSize = 11.sp,
+                                                        color = TextMuted
+                                                    )
+                                                }
+                                            }
+
+                                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                                IconButton(
+                                                    onClick = {
+                                                        QuranAudioPlayerManager.togglePlayPause(context, cached.surahNumber)
+                                                    }
+                                                ) {
+                                                    Icon(
+                                                        imageVector = Icons.Default.PlayCircleFilled,
+                                                        contentDescription = "Play Offline",
+                                                        tint = EmeraldPrimary,
+                                                        modifier = Modifier.size(28.dp)
+                                                    )
+                                                }
+                                                IconButton(
+                                                    onClick = {
+                                                        QuranAudioPlayerManager.deleteOfflineSurah(context, cached.surahNumber)
+                                                    }
+                                                ) {
+                                                    Icon(
+                                                        imageVector = Icons.Default.DeleteOutline,
+                                                        contentDescription = "Delete Offline Cache",
+                                                        tint = Color(0xFFC62828),
+                                                        modifier = Modifier.size(22.dp)
+                                                    )
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
+    }
+
+        // Floating Quran Player Bar at the bottom
+        QuranPlayerBar(
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .padding(bottom = 76.dp)
+        )
     }
 }
 
@@ -327,6 +486,10 @@ fun SurahCardItem(
     isUrdu: Boolean,
     onClick: () -> Unit
 ) {
+    val context = LocalContext.current
+    val playerState by QuranAudioPlayerManager.playerState.collectAsState()
+    val isPlayingThis = playerState.currentSurahNumber == surah.number && playerState.isPlaying
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -342,7 +505,10 @@ fun SurahCardItem(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.weight(1f)
+            ) {
                 // Surah Number Badge in Ornate Circle
                 Box(
                     modifier = Modifier
@@ -376,19 +542,55 @@ fun SurahCardItem(
                 }
             }
 
-            Column(horizontalAlignment = Alignment.End) {
-                Text(
-                    text = surah.arabicName,
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = EmeraldDark
-                )
-                Text(
-                    text = "${surah.revelationType} • ${surah.totalAyahs} آیات",
-                    fontSize = 11.sp,
-                    color = GoldDark,
-                    fontWeight = FontWeight.Medium
-                )
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                IconButton(
+                    onClick = {
+                        QuranAudioPlayerManager.togglePlayPause(context, surah.number)
+                    },
+                    modifier = Modifier.size(36.dp)
+                ) {
+                    Icon(
+                        imageVector = if (isPlayingThis) Icons.Default.PauseCircleFilled else Icons.Default.PlayCircleOutline,
+                        contentDescription = "Play Surah",
+                        tint = if (isPlayingThis) EmeraldPrimary else GoldDark,
+                        modifier = Modifier.size(28.dp)
+                    )
+                }
+
+                val isCached = remember(surah.number, playerState.isCachedOffline) {
+                    QuranAudioPlayerManager.isSurahCached(context, surah.number, playerState.reciter)
+                }
+
+                IconButton(
+                    onClick = {
+                        QuranAudioPlayerManager.downloadSurahForOffline(context, surah.number)
+                    },
+                    modifier = Modifier.size(36.dp)
+                ) {
+                    Icon(
+                        imageVector = if (isCached) Icons.Default.CheckCircle else Icons.Default.CloudDownload,
+                        contentDescription = "Download Surah Offline",
+                        tint = if (isCached) EmeraldPrimary else GoldDark,
+                        modifier = Modifier.size(22.dp)
+                    )
+                }
+
+                Spacer(modifier = Modifier.width(4.dp))
+
+                Column(horizontalAlignment = Alignment.End) {
+                    Text(
+                        text = surah.arabicName,
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = EmeraldDark
+                    )
+                    Text(
+                        text = "${surah.revelationType} • ${surah.totalAyahs} آیات",
+                        fontSize = 11.sp,
+                        color = GoldDark,
+                        fontWeight = FontWeight.Medium
+                    )
+                }
             }
         }
     }
@@ -506,6 +708,16 @@ fun SurahReaderView(
                 }
             },
             actions = {
+                val playerState by QuranAudioPlayerManager.playerState.collectAsState()
+                val isPlayingThis = playerState.currentSurahNumber == surah.number && playerState.isPlaying
+
+                IconButton(onClick = { QuranAudioPlayerManager.togglePlayPause(context, surah.number) }) {
+                    Icon(
+                        imageVector = if (isPlayingThis) Icons.Default.PauseCircleFilled else Icons.Default.PlayCircleOutline,
+                        contentDescription = "Audio Recitation",
+                        tint = GoldLight
+                    )
+                }
                 IconButton(onClick = { showFontDialog = true }) {
                     Icon(
                         imageVector = Icons.Default.FormatSize,

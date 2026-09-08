@@ -5,12 +5,15 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.AdminPanelSettings
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Mosque
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -20,6 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.data.model.AppLanguage
+import com.example.data.repository.UserProfileRepository
 import com.example.ui.components.KhanqahOfficialLogo
 import com.example.ui.theme.*
 
@@ -33,8 +37,10 @@ fun IslamicTopAppBar(
     onLanguageToggle: () -> Unit,
     onAdminClick: () -> Unit,
     onAboutClick: () -> Unit,
+    onProfileClick: () -> Unit = {},
     onKhanqahBadgeClick: () -> Unit = {}
 ) {
+    val authState by UserProfileRepository.authState.collectAsState()
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -135,6 +141,18 @@ fun IslamicTopAppBar(
                             fontSize = 11.sp,
                             fontWeight = FontWeight.Bold,
                             modifier = Modifier.padding(horizontal = 7.dp, vertical = 3.dp)
+                        )
+                    }
+
+                    IconButton(
+                        onClick = onProfileClick,
+                        modifier = Modifier.size(36.dp)
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.AccountCircle,
+                            contentDescription = "Profile",
+                            tint = if (authState.isLoggedIn) GoldPrimary else GoldLight.copy(alpha = 0.85f),
+                            modifier = Modifier.size(22.dp)
                         )
                     }
 

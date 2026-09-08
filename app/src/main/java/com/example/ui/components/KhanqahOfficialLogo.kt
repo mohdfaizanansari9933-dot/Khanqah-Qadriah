@@ -30,28 +30,39 @@ import com.example.ui.theme.*
 
 /**
  * Official unified emblem and logo for Khanqah Qadriah Majeediah, Budaun Shareef.
- * Used consistently across:
- * - App Icon
- * - Splash screen
- * - Home screen top & banner
- * - Header (IslamicTopAppBar)
- * - About section
- * - Loading screen
- * - Website section
- * - YouTube section
+ * Displays the authentic green dome & arch emblem with thin, elegant proportions.
  */
+@Composable
+fun KhanqahThinLogo(
+    modifier: Modifier = Modifier,
+    height: Dp = 38.dp,
+    contentDescription: String = "Official Logo of Khanqah Qadriah Badaun Shareef"
+) {
+    Image(
+        painter = painterResource(id = R.drawable.img_khanqah_logo),
+        contentDescription = contentDescription,
+        modifier = modifier
+            .height(height)
+            .aspectRatio(1.463f)
+            .testTag("khanqah_thin_logo"),
+        contentScale = androidx.compose.ui.layout.ContentScale.Fit
+    )
+}
+
 @Composable
 fun KhanqahOfficialLogo(
     modifier: Modifier = Modifier,
-    size: Dp = 80.dp,
+    size: Dp = 72.dp,
     showSubtext: Boolean = false,
     showUrduName: Boolean = false,
     circular: Boolean = false,
     standalone: Boolean = false,
+    thinStyle: Boolean = true,
     goldGlow: Boolean = true,
-    elevation: Dp = 4.dp
+    elevation: Dp = 2.dp
 ) {
-    val cornerShape = if (circular) CircleShape else RoundedCornerShape(if (size > 100.dp) 20.dp else if (size > 60.dp) 14.dp else 10.dp)
+    val naturalRatio = 1.463f
+    val cornerShape = if (circular) CircleShape else RoundedCornerShape(if (size > 100.dp) 16.dp else if (size > 60.dp) 12.dp else 8.dp)
 
     Column(
         modifier = modifier.testTag("khanqah_official_logo_container"),
@@ -63,10 +74,47 @@ fun KhanqahOfficialLogo(
                 painter = painterResource(id = R.drawable.img_khanqah_logo),
                 contentDescription = "Official Logo of Khanqah Qadriah Badaun Shareef",
                 modifier = Modifier
-                    .size(size)
+                    .height(size)
+                    .aspectRatio(naturalRatio)
                     .testTag("khanqah_official_logo_standalone"),
                 contentScale = androidx.compose.ui.layout.ContentScale.Fit
             )
+        } else if (thinStyle) {
+            // Elegant thin presentation with natural aspect ratio and hairline gold border
+            Surface(
+                modifier = Modifier
+                    .height(size)
+                    .width(size * 1.36f)
+                    .shadow(
+                        elevation = if (elevation > 2.dp) 2.dp else elevation,
+                        shape = cornerShape,
+                        ambientColor = GoldPrimary.copy(alpha = 0.3f),
+                        spotColor = GoldDark.copy(alpha = 0.4f)
+                    )
+                    .testTag("khanqah_official_logo_thin_badge"),
+                shape = cornerShape,
+                color = Color.White,
+                border = BorderStroke(
+                    width = 0.7.dp,
+                    color = GoldPrimary.copy(alpha = 0.6f)
+                )
+            ) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .clip(cornerShape)
+                        .background(Color.White)
+                        .padding(horizontal = 4.dp, vertical = 2.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Image(
+                        painter = painterResource(id = R.drawable.img_khanqah_logo),
+                        contentDescription = "Official Logo of Khanqah Qadriah Badaun Shareef",
+                        modifier = Modifier.fillMaxSize(),
+                        contentScale = androidx.compose.ui.layout.ContentScale.Fit
+                    )
+                }
+            }
         } else {
             Surface(
                 modifier = Modifier
@@ -81,7 +129,7 @@ fun KhanqahOfficialLogo(
                 shape = cornerShape,
                 color = Color.White,
                 border = BorderStroke(
-                    width = if (size > 70.dp) 2.dp else 1.2.dp,
+                    width = 0.8.dp,
                     brush = Brush.sweepGradient(
                         colors = listOf(
                             GoldLight,
@@ -97,10 +145,9 @@ fun KhanqahOfficialLogo(
                         .fillMaxSize()
                         .clip(cornerShape)
                         .background(Color.White)
-                        .padding(if (circular) (if (size > 60.dp) 6.dp else 3.dp) else (if (size > 60.dp) 4.dp else 2.dp)),
+                        .padding(if (circular) 4.dp else 2.dp),
                     contentAlignment = Alignment.Center
                 ) {
-                    // Official New Khanqah Qadriah Badaun Shareef Emblem
                     Image(
                         painter = painterResource(id = R.drawable.img_khanqah_logo),
                         contentDescription = "Official Logo of Khanqah Qadriah Badaun Shareef",

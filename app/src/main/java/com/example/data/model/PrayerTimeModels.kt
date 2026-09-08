@@ -14,7 +14,18 @@ data class PrayerTimes(
     val dhuhrMillis: Long = 0L,
     val asrMillis: Long = 0L,
     val maghribMillis: Long = 0L,
-    val ishaMillis: Long = 0L
+    val ishaMillis: Long = 0L,
+    val fajrStart: String = fajr,
+    val fajrEnd: String = sunrise,
+    val dhuhrStart: String = dhuhr,
+    val dhuhrEnd: String = asr,
+    val asrStart: String = asr,
+    val asrEnd: String = maghrib,
+    val maghribStart: String = maghrib,
+    val maghribEnd: String = isha,
+    val ishaStart: String = isha,
+    val ishaEnd: String = fajr,
+    val zawal: String = dhuhr
 )
 
 enum class PrayerName(val urduName: String, val englishName: String) {
@@ -30,7 +41,9 @@ data class NextPrayerInfo(
     val prayer: PrayerName,
     val timeFormatted: String,
     val remainingMillis: Long,
-    val progressFraction: Float
+    val progressFraction: Float,
+    val currentPrayer: PrayerName? = null,
+    val currentPrayerEndsIn: String? = null
 )
 
 data class LocationInfo(
@@ -57,5 +70,7 @@ data class PrayerNotificationSettings(
     val maghrib: Boolean = true,
     val isha: Boolean = true,
     val sehri: Boolean = true,
-    val iftar: Boolean = true
+    val iftar: Boolean = true,
+    val soundEnabled: Boolean = true,
+    val azanAlertMode: String = "AZAN" // "AZAN", "ALARM", "SILENT"
 )

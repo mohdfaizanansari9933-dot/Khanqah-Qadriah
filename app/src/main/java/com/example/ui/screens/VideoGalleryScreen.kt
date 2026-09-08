@@ -109,8 +109,9 @@ fun VideoGalleryScreen(
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             KhanqahOfficialLogo(
-                                size = 52.dp,
-                                elevation = 4.dp
+                                size = 44.dp,
+                                thinStyle = true,
+                                elevation = 1.dp
                             )
                             Spacer(modifier = Modifier.width(14.dp))
                             Column(modifier = Modifier.weight(1f)) {

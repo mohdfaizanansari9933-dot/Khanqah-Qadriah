@@ -30,6 +30,7 @@ import com.example.data.model.LocationInfo
 import com.example.data.model.NextPrayerInfo
 import com.example.data.model.PrayerTimes
 import com.example.data.repository.KhanqahRepository
+import com.example.ui.components.HaqMultimediaSpeechesSection
 import com.example.ui.components.KhanqahOfficialLogo
 import com.example.ui.components.PrayerCountdownCard
 import com.example.ui.components.QuickAccessGrid
@@ -152,7 +153,15 @@ fun HomeScreen(
             )
         }
 
-        // 6. Khanqah Qadriah Official Portal Spotlight
+        // 6. HAQ MULTIMEDIA • Huzoor Ateef Miya Qadri Speeches (Prominent Front Spotlight)
+        item {
+            HaqMultimediaSpeechesSection(
+                currentLanguage = currentLanguage,
+                onViewAllVideos = { onNavigateToSection("videos") }
+            )
+        }
+
+        // 7. Khanqah Qadriah Official Portal Spotlight
         item {
             Card(
                 modifier = Modifier
@@ -170,8 +179,9 @@ fun HomeScreen(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     KhanqahOfficialLogo(
-                        size = 52.dp,
-                        elevation = 4.dp
+                        size = 44.dp,
+                        thinStyle = true,
+                        elevation = 1.dp
                     )
 
                     Spacer(modifier = Modifier.width(14.dp))

@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.asStateFlow
 object AppPreferencesRepository {
 
     val PREDEFINED_CITIES = listOf(
-        LocationInfo("بدایوں شریف (Budaun Shareef)", "بھارت", 28.0315, 79.1176),
+        LocationInfo("بدایوں شریف (Budaun Shareef)", "بھارت", 28.0339, 79.1278),
         LocationInfo("بریلی شریف (Bareilly)", "بھارت", 28.3670, 79.4304),
         LocationInfo("دہلی (Delhi)", "بھارت", 28.6139, 77.2090),
         LocationInfo("لکھنؤ (Lucknow)", "بھارت", 26.8467, 80.9462),
