@@ -1,0 +1,6 @@
+{
+  "name": "Khanqah Qadriah",
+  "description": "An authentic Islamic companion app following Ahle Sunnat wa Jamaat featuring Quran with Urdu translation, Hanafi prayer times, Qibla finder, Islamic calendar, books, and Azkar in Urdu.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

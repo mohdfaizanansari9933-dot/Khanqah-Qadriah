@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Group positioned and scaled in the center (Safe Area: x: 18..90, y: 18..90) -->
+    <group
+        android:scaleX="0.063"
+        android:scaleY="0.063"
+        android:translateX="16.2"
+        android:translateY="28.2">
+
+        <!-- Base Shadow -->
+        <path
+            android:pathData="M140,758 A460,20 0 1,0 1060,758 A460,20 0 1,0 140,758 Z"
+            android:fillColor="#25000000" />
+
+        <!-- Arch Ribbon -->
+        <path
+            android:pathData="M 20,748 L 165,748 C 165,720 172,695 185,665 A 395,395 0 0,1 1015,665 C 1028,695 1035,720 1035,748 L 1180,748 L 1180,718 C 1145,718 1135,695 1120,650 A 530,530 0 0,0 80,650 C 65,695 55,718 20,718 Z">
+            <aapt:attr name="android:fillColor">
+                <gradient
+                    android:angle="135"
+                    android:startColor="#0C5A48"
+                    android:centerColor="#116D57"
+                    android:endColor="#063D31"
+                    android:type="linear" />
+            </aapt:attr>
+        </path>
+
+        <!-- Base Crenellations White Plate -->
+        <path
+            android:pathData="M 195,650 L 1005,650 L 1005,732 L 195,732 Z"
+            android:fillColor="#FFFFFF" />
+
+        <!-- The 7 Maroon Pointed Arches (Kanguras) with White Trim -->
+        <path
+            android:pathData="M 215,715 L 215,666 C 215,640 238,624 262,622 C 286,624 309,640 309,666 L 309,715 Z M 326,715 L 326,666 C 326,640 349,624 373,622 C 397,624 420,640 420,666 L 420,715 Z M 437,715 L 437,666 C 437,640 460,624 484,622 C 508,624 531,640 531,666 L 531,715 Z M 548,715 L 548,666 C 548,640 574,620 600,618 C 626,620 652,640 652,666 L 652,715 Z M 669,715 L 669,666 C 669,640 692,624 716,622 C 740,624 763,640 763,666 L 763,715 Z M 780,715 L 780,666 C 780,640 803,624 827,622 C 851,624 874,640 874,666 L 874,715 Z M 891,715 L 891,666 C 891,640 914,624 938,622 C 962,624 985,640 985,666 L 985,715 Z"
+            android:fillColor="#78132D"
+            android:strokeWidth="4"
+            android:strokeColor="#FFFFFF" />
+
+        <!-- Horizontal Teal Plinth Beam -->
+        <path
+            android:pathData="M 188,715 L 1012,715 L 1020,746 L 600,724 L 180,746 Z">
+            <aapt:attr name="android:fillColor">
+                <gradient
+                    android:angle="90"
+                    android:startColor="#063B32"
+                    android:centerColor="#106658"
+                    android:endColor="#1B8776"
+                    android:type="linear" />
+            </aapt:attr>
+        </path>
+        <path
+            android:pathData="M 180,746 L 600,724 L 1020,746 L 1008,752 L 600,732 L 192,752 Z"
+            android:fillColor="#07352C" />
+
+        <!-- Main Emerald Green Onion Dome -->
+        <path
+            android:pathData="M 205,650 C 185,550 240,430 380,360 C 435,330 465,310 475,305 L 725,305 C 735,310 765,330 820,360 C 960,430 1015,550 995,650 Z">
+            <aapt:attr name="android:fillColor">
+                <gradient
+                    android:gradientRadius="500"
+                    android:centerX="540"
+                    android:centerY="320"
+                    android:startColor="#1ECB97"
+                    android:centerColor="#009A6F"
+                    android:endColor="#014732"
+                    android:type="radial" />
+            </aapt:attr>
+        </path>
+
+        <!-- Dome White Ribs (Curved Stripes) -->
+        <path
+            android:pathData="M 545,306 C 535,390 500,520 488,642 M 655,306 C 665,390 700,520 712,642 M 495,310 C 455,400 375,520 350,645 M 705,310 C 745,400 825,520 850,645 M 476,312 C 370,410 260,530 226,648 M 724,312 C 830,410 940,530 974,648"
+            android:strokeWidth="12"
+            android:strokeColor="#FFFFFF"
+            android:strokeLineCap="round" />
+
+        <!-- Stepped Neck Collar -->
+        <path
+            android:pathData="M 452,305 L 748,305 L 732,320 L 468,320 Z"
+            android:fillColor="#084A3B"
+            android:strokeWidth="3"
+            android:strokeColor="#168F74" />
+
+        <!-- Fluted Neck in Cyan Blue -->
+        <path
+            android:pathData="M 480,185 C 475,230 460,290 455,305 L 745,305 C 740,290 725,230 720,185 Z">
+            <aapt:attr name="android:fillColor">
+                <gradient
+                    android:angle="0"
+                    android:startColor="#58B3CD"
+                    android:centerColor="#E3F7FD"
+                    android:endColor="#2B7F98"
+                    android:type="linear" />
+            </aapt:attr>
+        </path>
+
+        <path
+            android:pathData="M 515,188 C 510,230 495,280 490,305 M 555,186 C 552,230 545,280 540,305 M 600,185 L 600,305"
+            android:strokeWidth="4"
+            android:strokeColor="#FFFFFF" />
+
+        <path
+            android:pathData="M 645,186 C 648,230 655,280 660,305 M 685,188 C 690,230 705,280 710,305"
+            android:strokeWidth="3"
+            android:strokeColor="#266B80" />
+
+        <!-- Upper Collar Rings -->
+        <path
+            android:pathData="M 480,185 A 120,16 0 1,0 720,185 A 120,16 0 1,0 480,185 Z"
+            android:fillColor="#79C8E0"
+            android:strokeWidth="3"
+            android:strokeColor="#FFFFFF" />
+
+        <!-- Pointed Finial -->
+        <path
+            android:pathData="M 600,15 C 612,65 642,110 646,140 C 646,160 625,175 600,175 C 575,175 554,160 554,140 C 558,110 588,65 600,15 Z">
+            <aapt:attr name="android:fillColor">
+                <gradient
+                    android:angle="0"
+                    android:startColor="#52B0CA"
+                    android:centerColor="#EAF9FE"
+                    android:endColor="#227790"
+                    android:type="linear" />
+            </aapt:attr>
+        </path>
+        <path
+            android:pathData="M 600,24 C 595,70 574,115 570,140 C 570,152 585,162 600,165"
+            android:strokeWidth="4.5"
+            android:strokeColor="#FFFFFF"
+            android:strokeLineCap="round" />
+
+        <!-- Arched Letters -->
+        <group android:pivotX="40" android:pivotY="50" android:rotation="78.0" android:scaleX="0.65" android:scaleY="0.65" android:translateX="105.2" android:translateY="686.7">
+            <path android:fillColor="#FFFFFF" android:pathData="M 10,0 L 25,0 L 25,45 L 60,0 L 78,0 L 38,50 L 80,100 L 60,100 L 25,56 L 25,100 L 10,100 Z" />
+        </group>
+        <group android:pivotX="40" android:pivotY="50" android:rotation="92.0" android:scaleX="0.65" android:scaleY="0.65" android:translateX="95.3" android:translateY="573.8">
+            <path android:fillColor="#FFFFFF" android:pathData="M 10,0 L 25,0 L 25,42 L 55,42 L 55,0 L 70,0 L 70,100 L 55,100 L 55,56 L 25,56 L 25,100 L 10,100 Z" />
+        </group>
+        <group android:pivotX="40" android:pivotY="50" android:rotation="105.0" android:scaleX="0.65" android:scaleY="0.65" android:translateX="110.8" android:translateY="469.6">
+            <path android:fillColor="#FFFFFF" android:pathData="M 32,0 L 48,0 L 80,100 L 65,100 L 55,68 L 25,68 L 15,100 L 0,100 Z M 40,22 L 29,54 L 51,54 Z" />
+        </group>
+        <group android:pivotX="40" android:pivotY="50" android:rotation="119.0" android:scaleX="0.65" android:scaleY="0.65" android:translateX="153.3" android:translateY="364.6">
+            <path android:fillColor="#FFFFFF" android:pathData="M 10,0 L 26,0 L 56,70 L 56,0 L 70,0 L 70,100 L 54,100 L 24,30 L 24,100 L 10,100 Z" />
+        </group>
+        <group android:pivotX="40" android:pivotY="50" android:rotation="133.0" android:scaleX="0.65" android:scaleY="0.65" android:translateX="219.9" android:translateY="272.9">
+            <path android:fillColor="#FFFFFF" android:pathData="M 40,0 C 18,0 5,22 5,50 C 5,78 18,100 40,100 C 50,100 58,95 64,88 L 72,98 L 80,90 L 70,80 C 74,71 76,61 76,50 C 76,22 62,0 40,0 Z M 40,15 C 54,15 62,30 62,50 C 62,70 54,85 40,85 C 26,85 18,70 18,50 C 18,30 26,15 40,15 Z M 55,75 L 75,95" />
+        </group>
+        <group android:pivotX="40" android:pivotY="50" android:rotation="147.0" android:scaleX="0.65" android:scaleY="0.65" android:translateX="306.7" android:translateY="200.0">
+            <path android:fillColor="#FFFFFF" android:pathData="M 32,0 L 48,0 L 80,100 L 65,100 L 55,68 L 25,68 L 15,100 L 0,100 Z M 40,22 L 29,54 L 51,54 Z" />
+        </group>
+        <group android:pivotX="40" android:pivotY="50" android:rotation="160.0" android:scaleX="0.65" android:scaleY="0.65" android:translateX="401.0" android:translateY="153.0">
+            <path android:fillColor="#FFFFFF" android:pathData="M 10,0 L 25,0 L 25,42 L 55,42 L 55,0 L 70,0 L 70,100 L 55,100 L 55,56 L 25,56 L 25,100 L 10,100 Z" />
+        </group>
+        <group android:pivotX="40" android:pivotY="50" android:rotation="200.0" android:scaleX="0.65" android:scaleY="0.65" android:translateX="719.0" android:translateY="153.0">
+            <path android:fillColor="#FFFFFF" android:pathData="M 40,0 C 18,0 5,22 5,50 C 5,78 18,100 40,100 C 50,100 58,95 64,88 L 72,98 L 80,90 L 70,80 C 74,71 76,61 76,50 C 76,22 62,0 40,0 Z M 40,15 C 54,15 62,30 62,50 C 62,70 54,85 40,85 C 26,85 18,70 18,50 C 18,30 26,15 40,15 Z M 55,75 L 75,95" />
+        </group>
+        <group android:pivotX="40" android:pivotY="50" android:rotation="213.0" android:scaleX="0.65" android:scaleY="0.65" android:translateX="813.3" android:translateY="200.0">
+            <path android:fillColor="#FFFFFF" android:pathData="M 32,0 L 48,0 L 80,100 L 65,100 L 55,68 L 25,68 L 15,100 L 0,100 Z M 40,22 L 29,54 L 51,54 Z" />
+        </group>
+        <group android:pivotX="40" android:pivotY="50" android:rotation="227.0" android:scaleX="0.65" android:scaleY="0.65" android:translateX="900.1" android:translateY="272.9">
+            <path android:fillColor="#FFFFFF" android:pathData="M 10,0 L 42,0 C 65,0 75,20 75,50 C 75,80 65,100 42,100 L 10,100 Z M 25,16 L 40,16 C 55,16 60,30 60,50 C 60,70 55,84 40,84 L 25,84 Z" />
+        </group>
+        <group android:pivotX="40" android:pivotY="50" android:rotation="241.0" android:scaleX="0.65" android:scaleY="0.65" android:translateX="966.7" android:translateY="364.6">
+            <path android:fillColor="#FFFFFF" android:pathData="M 10,0 L 45,0 C 62,0 72,12 72,32 C 72,48 62,58 48,60 L 75,100 L 58,100 L 34,62 L 25,62 L 25,100 L 10,100 Z M 25,15 L 42,15 C 52,15 57,22 57,32 C 57,42 52,48 42,48 L 25,48 Z" />
+        </group>
+        <group android:pivotX="40" android:pivotY="50" android:rotation="254.0" android:scaleX="0.65" android:scaleY="0.65" android:translateX="1007.0" android:translateY="461.8">
+            <path android:fillColor="#FFFFFF" android:pathData="M 18,0 L 42,0 L 42,15 L 34,15 L 34,85 L 42,85 L 42,100 L 18,100 L 18,85 L 26,85 L 26,15 L 18,15 Z" />
+        </group>
+        <group android:pivotX="40" android:pivotY="50" android:rotation="268.0" android:scaleX="0.65" android:scaleY="0.65" android:translateX="1024.7" android:translateY="573.8">
+            <path android:fillColor="#FFFFFF" android:pathData="M 32,0 L 48,0 L 80,100 L 65,100 L 55,68 L 25,68 L 15,100 L 0,100 Z M 40,22 L 29,54 L 51,54 Z" />
+        </group>
+        <group android:pivotX="40" android:pivotY="50" android:rotation="282.0" android:scaleX="0.65" android:scaleY="0.65" android:translateX="1014.8" android:translateY="686.7">
+            <path android:fillColor="#FFFFFF" android:pathData="M 10,0 L 25,0 L 25,42 L 55,42 L 55,0 L 70,0 L 70,100 L 55,100 L 55,56 L 25,56 L 25,100 L 10,100 Z" />
+        </group>
+
+    </group>
+</vector>
